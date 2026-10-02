@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card wide">
+    <h1>Create Account</h1>
+    <p class="muted">Your email is used for password recovery. Choose at least 3 images in order.</p>
+    <form method="POST" id="graphical-form" autocomplete="off">
+        <label>Username</label>
+        <input type="text" name="username" autocomplete="off" autocapitalize="none" required>
+        <label>Email</label>
+        <input type="email" name="email" autocomplete="email" required>
+        <label>Normal Password</label>
+        <div class="password-wrap">
+            <input type="password" name="password" id="password" autocomplete="new-password" required minlength="6">
+            <button type="button" class="eye-button" onclick="togglePassword('password', this)">Show</button>
+        </div>
+        <label>Graphical Password</label>
+        <input type="hidden" name="graphical_password" id="graphical_password">
+        <div id="selected-box">Selected sequence: <span id="selected-sequence">None</span></div>
+        <div class="image-grid">
+            {% for key, name in images %}
+            <button type="button" class="image-card" data-key="{{ key }}" onclick="selectImage(this)">
+                <img src="{{ url_for('static', filename='images/' ~ key ~ '.svg') }}" alt="Graphical password image">
+            </button>
+            {% endfor %}
+        </div>
+        <button class="primary" type="submit">Create Account</button>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='js/graphical.js') }}"></script>
+{% endblock %}

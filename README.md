@@ -1,6 +1,6 @@
 # Graphical Password Authentication
 
-Flask + SQLite project with two-factor authentication: a normal password and an ordered graphical password sequence.
+Flask + SQLite project : a normal password and an ordered graphical password sequence.
 
 ## Added in this version
 - Email collected during registration.
